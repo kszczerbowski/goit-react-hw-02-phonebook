@@ -1,31 +1,31 @@
 .inputArea {
-    text-align: left;
-    max-width: 50%;
-    margin: 0px auto;
-    background-color: azure;
-    border: 1px solid black;
-    border-radius: 5%;
-  }
+  text-align: left;
+  max-width: 50%;
+  margin: 0px auto;
+  background-color: azure;
+  border: 1px solid black;
+  border-radius: 5%;
+}
 
-  .inputTitle {
-    margin: 10px auto 5px 10px;
-    display: block;
-  }
+.inputTitle {
+  margin: 10px auto 5px 10px;
+  display: block;
+}
 
-  .nameInput {
-    display: block;
-    margin: auto auto 20px 10px;
-  }
+.nameInput {
+  display: block;
+  margin: auto auto 20px 10px;
+}
 
-  .phoneInput {
-    display: block;
-    margin: auto auto 20px 10px;
-  }
+.phoneInput {
+  display: block;
+  margin: auto auto 20px 10px;
+}
 
-  .addContactButton {
-    margin: auto auto 10px 10px;
-  }
-  
-  .addContactButton:hover {
-    cursor: pointer;
-  }
+.addContactButton {
+  margin: auto auto 10px 10px;
+}
+
+.addContactButton:hover {
+  cursor: pointer;
+}

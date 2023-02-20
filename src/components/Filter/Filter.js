@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import css from './Filter.module.css';
+import PropTypes from 'prop-types';
 
 export class Filter extends Component {
   render() {
@@ -19,3 +20,7 @@ export class Filter extends Component {
     );
   }
 }
+
+Filter.propTypes = {
+  onFilter: PropTypes.func,
+};

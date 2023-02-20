@@ -8,22 +8,24 @@ import { Filter } from './Filter/Filter';
 
 export class App extends Component {
   state = {
-    contacts: [
-      { name: 'Yennefer z Vengerbergu', number: '645 848 521', id: 123456 },
-      { name: 'Triss Merigold', number: '645 848 522', id: 123456789 },
-    ],
-    filter: ''
+    contacts: [],
+    filter: '',
   };
 
   clearForm = event => {
     const form = event.currentTarget;
     form.elements.name.value = '';
     form.elements.number.value = '';
-  }
+  };
 
   deleteContact = event => {
-    
-  }
+    const nameToDelete = event.currentTarget.previousElementSibling.textContent;
+    const namesArray = this.state.contacts.map(contact => contact.name);
+    const index = namesArray.indexOf(nameToDelete);
+    this.setState({
+      ...this.state.contacts.splice(index, 1),
+    });
+  };
 
   addContact = event => {
     event.preventDefault();
@@ -69,12 +71,19 @@ export class App extends Component {
     return (
       <div className={css.container}>
         <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.addContact}/>
+        <ContactForm onSubmit={this.addContact} />
         <h2>Contacts</h2>
-        <Filter onFilter={this.handleFilter}/>
+        <Filter onFilter={this.handleFilter} />
         <ContactList>
           {this.state.contacts.map(contact => {
-            return <ContactListElement key={contact.name} name={contact.name} number={contact.number}/>
+            return (
+              <ContactListElement
+                key={contact.name}
+                name={contact.name}
+                number={contact.number}
+                deleteContact={this.deleteContact}
+              />
+            );
           })}
         </ContactList>
       </div>
