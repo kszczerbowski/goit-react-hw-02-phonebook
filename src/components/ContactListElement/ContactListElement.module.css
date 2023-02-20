@@ -1,0 +1,7 @@
+.deleteContactButton {
+  margin: auto auto 10px 10px;
+}
+
+.deleteContactButton:hover {
+  cursor: pointer;
+}
