@@ -15,11 +15,13 @@
 .nameInput {
   display: block;
   margin: auto auto 20px 10px;
+  max-width: 80%;
 }
 
 .phoneInput {
   display: block;
   margin: auto auto 20px 10px;
+  max-width: 80%;
 }
 
 .addContactButton {

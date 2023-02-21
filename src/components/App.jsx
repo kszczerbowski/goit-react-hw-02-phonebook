@@ -12,13 +12,13 @@ export class App extends Component {
     filter: '',
   };
 
-  clearForm = event => {
+  handleClearForm = event => {
     const form = event.currentTarget;
     form.elements.name.value = '';
     form.elements.number.value = '';
   };
 
-  deleteContact = event => {
+  handleDeleteContact = event => {
     const nameToDelete = event.currentTarget.previousElementSibling.textContent;
     const namesArray = this.state.contacts.map(contact => contact.name);
     const index = namesArray.indexOf(nameToDelete);
@@ -27,7 +27,7 @@ export class App extends Component {
     });
   };
 
-  addContact = event => {
+  handleAddContact = event => {
     event.preventDefault();
     const form = event.currentTarget;
     if (
@@ -48,40 +48,33 @@ export class App extends Component {
         ],
       });
     }
-    this.clearForm(event);
+    this.handleClearForm(event);
   };
 
   handleFilter = event => {
     this.setState({ [event.target.name]: event.target.value });
-    const contactsArray = document.querySelectorAll('#contactsList li');
-    contactsArray.forEach(contact => {
-      if (
-        !contact.textContent
-          .toLowerCase()
-          .includes(event.currentTarget.value.toLowerCase())
-      ) {
-        contact.style.display = 'none';
-      } else {
-        contact.style.display = 'list-item';
-      }
-    });
   };
 
   render() {
+    const filteredContacts = this.state.contacts.filter(contact => {
+      return contact.name
+        .toLowerCase()
+        .includes(this.state.filter.toLowerCase());
+    });
     return (
       <div className={css.container}>
         <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.addContact} />
+        <ContactForm onSubmit={this.handleAddContact} />
         <h2>Contacts</h2>
         <Filter onFilter={this.handleFilter} />
         <ContactList>
-          {this.state.contacts.map(contact => {
+          {filteredContacts.map(contact => {
             return (
               <ContactListElement
                 key={contact.name}
                 name={contact.name}
                 number={contact.number}
-                deleteContact={this.deleteContact}
+                onDeleteContact={this.handleDeleteContact}
               />
             );
           })}

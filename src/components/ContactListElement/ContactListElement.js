@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 
 export class ContactListElement extends Component {
   render() {
-    const { name, number, deleteContact } = this.props;
+    const { name, number, onDeleteContact } = this.props;
     return (
       <li>
         <span id="name">{name}</span>: {number}
         <button
-          onClick={deleteContact}
+          onClick={onDeleteContact}
           type="button"
           className={css.deleteContactButton}
         >
